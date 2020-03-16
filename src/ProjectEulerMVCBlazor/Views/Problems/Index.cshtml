@@ -1,0 +1,18 @@
+@model ProblemsViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <h3>@Model.Text</h3>
+
+    @foreach(var (name, fullName) in Model.ProblemsLinks)
+    {
+        <a asp-area="" asp-controller="SpecificProblem" asp-action="Index" asp-route-fullName="@fullName">@name</a>
+        <br/>
+    }
+
+</div>

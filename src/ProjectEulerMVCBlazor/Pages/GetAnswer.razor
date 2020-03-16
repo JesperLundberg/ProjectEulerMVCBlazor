@@ -1,0 +1,26 @@
+﻿@page "/GetAnswer"
+@using Problems
+@using Problems.Services
+@inject IProblemsService ProblemsService
+
+@if(answer != null)
+{
+    <div>
+        The answer is: <b>@answer.Answer</b> and it took <b>@answer.TimeTaken</b> ms
+    </div>
+}
+
+<button class="btn btn-light" @onclick="@(e => GetAnswerAndTime())">Get answer</button>
+
+@code {
+    AnswerDTO answer;
+
+    [Parameter]
+    public string FullName { get; set; }
+
+    private async void GetAnswerAndTime()
+    {
+        answer = await ProblemsService.GetAnswerAsync(FullName);
+    }
+
+}

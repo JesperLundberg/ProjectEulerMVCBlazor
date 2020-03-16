@@ -1,0 +1,15 @@
+@using ProjectEulerMVCBlazor.Pages
+@model SpecificProblemViewModel
+
+@{
+    ViewData["Title"] = $"Problem: {Model.Header}";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <h1>@Model.Header</h1>
+    <h3>@Model.Text</h3>
+
+    @(await Html.RenderComponentAsync<GetAnswer>(RenderMode.ServerPrerendered, new {FullName = Model.RequestedProblemName}))
+</div>
